@@ -1,4 +1,4 @@
-git clone https://github.com/aahadrahi/hhc.git
+git clone https://github.com/farsi8273/HHC_Trust_Deployment.git
 
 python -m venv hhcenv
 
