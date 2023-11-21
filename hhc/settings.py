@@ -97,11 +97,11 @@ WSGI_APPLICATION = 'hhc.wsgi.application'
 DATABASES = {
        'default': {
        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'hhc',
-        'USER': 'hhc',
-        'PASSWORD': 'hhc4u',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ['db_name'],
+        'USER': os.environ['db_user'],
+        'PASSWORD': os.environ['db_pass'],
+        'HOST': os.environ['db_host'],
+        'PORT': os.environ['db_port'],
     }
 }
 
@@ -125,8 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'hhc4you@gmail.com'
-EMAIL_HOST_PASSWORD = 'ntudgjozyuznzyms'
+EMAIL_HOST_USER = os.environ['email'] 
+EMAIL_HOST_PASSWORD = os.environ['email_app_key']
 EMAIL_PORT = 587
 EMAIL_USE_TLS= True
 
