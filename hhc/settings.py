@@ -22,10 +22,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # use this if setting up on Windows 10 with GDAL installed from OSGeo4W using defaults
-if os.name == 'nt':
-    VIRTUAL_ENV_BASE = os.environ['VIRTUAL_ENV']
-    os.environ['PATH'] = os.path.join(VIRTUAL_ENV_BASE, r'.\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
-    os.environ['PROJ_LIB'] = os.path.join(VIRTUAL_ENV_BASE, r'.\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
+# if os.name == 'nt':
+#     VIRTUAL_ENV_BASE = os.environ['VIRTUAL_ENV']
+#     os.environ['PATH'] = os.path.join(VIRTUAL_ENV_BASE, r'.\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
+#     os.environ['PROJ_LIB'] = os.path.join(VIRTUAL_ENV_BASE, r'.\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
 
 
 # Quick-start development settings - unsuitable for production
@@ -94,15 +94,19 @@ WSGI_APPLICATION = 'hhc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-       'default': {
-       'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.environ['db_name'],
-        'USER': os.environ['db_user'],
-        'PASSWORD': os.environ['db_pass'],
-        'HOST': os.environ['db_host'],
-        'PORT': os.environ['db_port'],
+DATABASES = {'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
+             
+    #    'default': {
+    #    'ENGINE': 'django.contrib.gis.db.backends.postgis',
+    #     'NAME': os.environ['db_name'],
+    #     'USER': os.environ['db_user'],
+    #     'PASSWORD': os.environ['db_pass'],
+    #     'HOST': os.environ['db_host'],
+    #     'PORT': os.environ['db_port'],
+    # }
 }
 
 
@@ -124,9 +128,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ['email'] 
-EMAIL_HOST_PASSWORD = os.environ['email_app_key']
+EMAIL_HOST = 'smtp.gmail.com' or None
+EMAIL_HOST_USER = os.environ.get('email', None)
+EMAIL_HOST_PASSWORD = os.environ.get('email_app_key',None)
 EMAIL_PORT = 587
 EMAIL_USE_TLS= True
 
@@ -139,6 +143,16 @@ PAYTM_INDUSTRY_TYPE_ID = 'Retail'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
+AWS_ACCESS_KEY_ID = 'AKIAXUYDI7HIGDBBS2Q7'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'hhcbucket'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'eu-north-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -150,20 +164,24 @@ USE_L10N = True
 USE_TZ = True
 
 
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_LOCATION = 'static'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_ROOT = str(BASE_DIR / 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [str(BASE_DIR / 'static')]
-# Default primary key field type
+# STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [str(BASE_DIR / 'static')]
+# # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
    
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
-AWS_STORAGE_BUCKET_NAME = 'hhc-db-backup'
-AWS_QUERYSTRING_AUTH = False
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = 'hhc-db-backup'
+# AWS_QUERYSTRING_AUTH = False
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
