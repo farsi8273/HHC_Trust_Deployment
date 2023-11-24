@@ -48,5 +48,12 @@ echo 'before collectstatic...........'
 python3 manage.py collectstatic --noinput
 echo ' creating statics............'
 sudo ufw allow 8000
-gunicorn -c gunicorn.py
+# gunicorn -c gunicorn.py
+
+gunicorn \
+    --workers 2 \
+    --bind 0.0.0.0:8000 \
+    --log-level=info \
+    hhc.wsgi.application
+
 
