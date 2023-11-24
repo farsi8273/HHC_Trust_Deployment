@@ -1,12 +1,26 @@
 #!/bin/bash
+# Project specific environment vars
+echo 'Intializing env vars...........'
+export db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
+export db_port="5432"
+export db_name="hhcdb"
+export db_user="postgres"
+export db_pass="postgres123"
+# emil app details
+export email='hhc4you@gmail.com'
+export email_app_key='ntudgjozyuznzyms'
+#gdal environment veriable
+export CPLUS_INCLUDE_PATH=/usr/include/gdal
+export C_INCLUDE_PATH=/usr/include/gdal
+# django super user details
+export DJANGO_SUPERUSER_PASSWORD=hhc4you
 echo "Installing OS packages.."
 sudo add-apt-repository -y ppa:ubuntugis/ppa 
 sudo apt update -y
 sudo apt install -y python3-venv python3-dev libpq-dev postgresql postgresql-contrib nginx curl postgis postgresql-14-postgis-3 python3-pip libgdal-dev gdal-bin
 # git clone https://github.com/farsi8273/HHC_Trust_Deployment.git
 # cd HHC_Trust_Deployment/
-echo 'Intializing env vars...........'
-sh ./env.sh
+
 echo "Creating  python environment.........."
 python3 -m venv hhcenv
 source ./hhcenv/bin/activate
