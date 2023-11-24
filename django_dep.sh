@@ -34,11 +34,11 @@ echo ' migrate done.............'
 USERNAME="admin"
 EMAIL="hhc4you@gmail.com"
 # Check if the superuser already exists
-existing_superuser=$(python manage.py shell -c "from django.contrib.auth.models import User; print(User.objects.filter(username='$USERNAME').exists())")
+existing_superuser=$(python3 manage.py shell -c "from django.contrib.auth.models import User; print(User.objects.filter(username='$USERNAME').exists())")
 
 if [ "$existing_superuser" = "False" ]; then
     # Create the superuser
-    python manage.py createsuperuser --username=$USERNAME --email=$EMAIL --noinput
+    python3 manage.py createsuperuser --username=$USERNAME --email=$EMAIL --noinput
     echo "Superuser created successfully."
 else
     echo "Superuser '$USERNAME' already exists."
@@ -48,5 +48,5 @@ echo 'before collectstatic...........'
 python3 manage.py collectstatic --noinput
 echo ' creating statics............'
 sudo ufw allow 8000
-gunicorn -c gunicorn.conf
+gunicorn -c gunicorn.py
 
