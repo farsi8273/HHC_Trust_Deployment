@@ -94,19 +94,20 @@ WSGI_APPLICATION = 'hhc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
-    }
-             
-    #    'default': {
-    #    'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    #     'NAME': os.environ['db_name'],
-    #     'USER': os.environ['db_user'],
-    #     'PASSWORD': os.environ['db_pass'],
-    #     'HOST': os.environ['db_host'],
-    #     'PORT': os.environ['db_port'],
+DATABASES = { 
+    #          'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / "db.sqlite3",
     # }
+             
+       'default': {
+       'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': os.environ['db_name'],
+        'USER': os.environ['db_user'],
+        'PASSWORD': os.environ['db_pass'],
+        'HOST': os.environ['db_host'],
+        'PORT': os.environ['db_port'],
+    }
 }
 
 
