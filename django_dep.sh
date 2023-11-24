@@ -1,20 +1,20 @@
 #!/bin/bash
 # Project specific environment vars
 echo 'Intializing env vars...........'
-# source ./env.sh
-db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
-db_port="5432"
-db_name="hhcdb"
-db_user="postgres"
-db_pass="postgres123"
-# emil app details
-email='hhc4you@gmail.com'
-email_app_key='ntudgjozyuznzyms'
-#gdal environment veriable
-CPLUS_INCLUDE_PATH=/usr/include/gdal
-C_INCLUDE_PATH=/usr/include/gdal
-# django super user details
-DJANGO_SUPERUSER_PASSWORD=hhc4you
+source ./env.sh
+# db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
+# db_port="5432"
+# db_name="hhcdb"
+# db_user="postgres"
+# db_pass="postgres123"
+# # emil app details
+# email='hhc4you@gmail.com'
+# email_app_key='ntudgjozyuznzyms'
+# #gdal environment veriable
+# CPLUS_INCLUDE_PATH=/usr/include/gdal
+# C_INCLUDE_PATH=/usr/include/gdal
+# # django super user details
+# DJANGO_SUPERUSER_PASSWORD=hhc4you
 echo "Installing OS packages.."
 sudo add-apt-repository -y ppa:ubuntugis/ppa 
 sudo apt update -y
@@ -49,7 +49,7 @@ echo 'before collectstatic...........'
 python3 manage.py collectstatic --noinput
 echo ' creating statics............'
 sudo ufw allow 8000
-sudo gunicorn -c gunicorn_conf.py
+gunicorn -c gunicorn_conf.py
 # chmod +x gunicorn_server.sh
 # ./gunicorn_server.sh
 # gunicorn \
