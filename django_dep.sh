@@ -6,7 +6,7 @@ sudo apt install -y python3-venv python3-dev libpq-dev postgresql postgresql-con
 # git clone https://github.com/farsi8273/HHC_Trust_Deployment.git
 # cd HHC_Trust_Deployment/
 echo 'Intializing env vars...........'
-./env.sh
+sh ./env.sh
 echo "Creating  python environment.........."
 python3 -m venv hhcenv
 source ./hhcenv/bin/activate
