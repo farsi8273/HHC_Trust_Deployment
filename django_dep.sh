@@ -1,19 +1,19 @@
 #!/bin/bash
 # Project specific environment vars
 echo 'Intializing env vars...........'
-export db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
-export db_port="5432"
-export db_name="hhcdb"
-export db_user="postgres"
-export db_pass="postgres123"
+sudo export db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
+sudo export db_port="5432"
+sudo export db_name="hhcdb"
+sudo export db_user="postgres"
+sudo export db_pass="postgres123"
 # emil app details
-export email='hhc4you@gmail.com'
-export email_app_key='ntudgjozyuznzyms'
+sudo export email='hhc4you@gmail.com'
+sudo export email_app_key='ntudgjozyuznzyms'
 #gdal environment veriable
-export CPLUS_INCLUDE_PATH=/usr/include/gdal
-export C_INCLUDE_PATH=/usr/include/gdal
+sudo export CPLUS_INCLUDE_PATH=/usr/include/gdal
+sudo export C_INCLUDE_PATH=/usr/include/gdal
 # django super user details
-export DJANGO_SUPERUSER_PASSWORD=hhc4you
+sudo export DJANGO_SUPERUSER_PASSWORD=hhc4you
 echo "Installing OS packages.."
 sudo add-apt-repository -y ppa:ubuntugis/ppa 
 sudo apt update -y
@@ -24,7 +24,7 @@ sudo apt install -y python3-venv python3-dev libpq-dev postgresql postgresql-con
 echo "Creating  python environment.........."
 python3 -m venv hhcenv
 source ./hhcenv/bin/activate
-echo 'Installing required project dependencies.......'
+echo 'Installing required psudo roject dependencies.......'
 pip install -r requirements.txt
 echo "running python project.."
 python3 manage.py makemigrations
