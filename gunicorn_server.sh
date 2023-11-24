@@ -29,5 +29,5 @@ gunicorn \
     --log-level=info \
     --access-logfile=$LOG_FILE
     # --log-file=$LOG_FILE \
-    --pid=$PID_FILE \
+    # --pid=$PID_FILE \
     $APP_MODULE
