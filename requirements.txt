@@ -16,6 +16,6 @@ tqdm==4.65.0
 boto3==1.28.49
 gunicorn
 psycopg2-binary
-GDAL
+GDAL==3.4.3
 boto3
 django-storages
