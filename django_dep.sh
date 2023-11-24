@@ -28,7 +28,9 @@ echo 'Installing required project dependencies.......'
 pip install -r requirements.txt
 echo "running python project.."
 python3 manage.py makemigrations
+echo 'creating migration............'
 python3 manage.py migrate
+echo ' migrate done.............'
 USERNAME="admin"
 EMAIL="hhc4you@gmail.com"
 # Check if the superuser already exists
@@ -42,7 +44,9 @@ else
     echo "Superuser '$USERNAME' already exists."
 fi
 # python3 manage.py createsuperuser --noinput --username admin --email $email
+echo 'before collectstatic...........'
 python3 manage.py collectstatic --noinput
+echo ' creating statics............'
 sudo ufw allow 8000
 gunicorn -c gunicorn.conf
 
