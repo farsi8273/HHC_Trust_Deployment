@@ -13,7 +13,7 @@ BIND_ADDRESS="0.0.0.0"
 BIND_PORT=8000
 
 # Gunicorn log file
-LOG_FILE= "gunicorn/dev.log"
+LOG_FILE= "gunicorn.log"
 
 # PID file for Gunicorn process
 PID_FILE="gunicorn.pid"
