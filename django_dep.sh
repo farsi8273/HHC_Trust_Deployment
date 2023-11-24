@@ -54,6 +54,7 @@ sudo ufw allow 8000
 nohup gunicorn -c gunicorn_conf.py &
 # Nginx Part
 public_ip = $(curl -s ifconfig.me)
+echo "getting public ip.........: $(public_ip)"
 sed -i "s/server_name.*/server_name $public_ip;/" ./hhc-server.conf
 sudo cp hhc-server.conf /etc/nginx/sites-available/hhcproject
 sudo ln -s /etc/nginx/sites-available/hhcproject /etc/nginx/sites-enabled
