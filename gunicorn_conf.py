@@ -1,6 +1,8 @@
 import multiprocessing
 
-bind = "0.0.0.0:8000"  # Change the host and port as needed
+bind = "0.0.0.0:8000" 
+# bind = "gunicorn-socket.sock" 
+## Change the host and port as needed
 workers = multiprocessing.cpu_count() * 2 + 1  # Adjust the number of workers based on your system
 errorlog = "/home/ubuntu/gunicorn_error.log" # Specify the path to the error log
 accesslog = "/home/ubuntu/gunicorn_access.log"

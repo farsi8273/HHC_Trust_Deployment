@@ -49,7 +49,9 @@ echo 'before collectstatic...........'
 python3 manage.py collectstatic --noinput
 echo ' creating statics............'
 sudo ufw allow 8000
-gunicorn -c gunicorn_conf.py
+# touch gunicorn-socket.sock
+# chmod 644 gunicorn-socket.sock
+nohup gunicorn -c gunicorn_conf.py &
 # chmod +x gunicorn_server.sh
 # ./gunicorn_server.sh
 # gunicorn \
