@@ -27,6 +27,7 @@ gunicorn \
     --workers $WORKERS \
     --bind $BIND_ADDRESS:$BIND_PORT \
     --log-level=info \
-    --log-file=$LOG_FILE \
+    --access-logfile=$LOG_FILE
+    # --log-file=$LOG_FILE \
     --pid=$PID_FILE \
     $APP_MODULE
