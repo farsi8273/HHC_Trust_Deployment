@@ -2,7 +2,7 @@ import multiprocessing
 
 bind = "0.0.0.0:8000"  # Change the host and port as needed
 workers = multiprocessing.cpu_count() * 2 + 1  # Adjust the number of workers based on your system
-# errorlog = "/var/log/gunicorn_error.log" # Specify the path to the error log
+errorlog = "/var/log/gunicorn_error.log" # Specify the path to the error log
 accesslog = "/var/log/gunicorn_access.log"
 loglevel = "info"  # Adjust the log level: debug, info, warning, error, critical
 timeout = 120  # Set the timeout for worker processes in seconds

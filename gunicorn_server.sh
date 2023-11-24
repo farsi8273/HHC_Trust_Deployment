@@ -23,7 +23,7 @@ PID_FILE="gunicorn.pid"
 # mkdir -p /var/log/gunicorn/
 # touch /var/log/gunicorn/dev.log
 # Start Gunicorn
-gunicorn \
+sudo gunicorn \
     --workers $WORKERS \
     --bind $BIND_ADDRESS:$BIND_PORT \
     --log-level=info \
