@@ -52,13 +52,12 @@ sudo ufw allow 8000
 # touch gunicorn-socket.sock
 # chmod 644 gunicorn-socket.sock
 nohup gunicorn -c gunicorn_conf.py &
-# chmod +x gunicorn_server.sh
-# ./gunicorn_server.sh
-# gunicorn \
-
-#     --workers 2 \
-#     --bind 0.0.0.0:8000 \
-#     --log-level=info \
-#     hhc.wsgi:application
-
+# Nginx Part
+public_ip = $(curl -s ifconfig.me)
+sed -i "s/server_name.*/server_name $public_ip;/" ./hhc-server.conf
+sudo cp hhc-server.conf /etc/nginx/sites-available/hhcproject
+sudo ln -s /etc/nginx/sites-available/hhcproject /etc/nginx/sites-enabled
+sudo nginx -t
+sudo systemctl restart nginx
+sudo ufw allow 'Nginx Full'
 
