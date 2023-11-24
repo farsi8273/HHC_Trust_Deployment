@@ -1,19 +1,19 @@
 #!/bin/bash
 # Project specific environment vars
 echo 'Intializing env vars...........'
-sudo export db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
-sudo export db_port="5432"
-sudo export db_name="hhcdb"
-sudo export db_user="postgres"
-sudo export db_pass="postgres123"
+db_host="hhcdjango.ctbmd1d7wwum.eu-north-1.rds.amazonaws.com"
+db_port="5432"
+db_name="hhcdb"
+db_user="postgres"
+db_pass="postgres123"
 # emil app details
-sudo export email='hhc4you@gmail.com'
-sudo export email_app_key='ntudgjozyuznzyms'
+email='hhc4you@gmail.com'
+email_app_key='ntudgjozyuznzyms'
 #gdal environment veriable
-sudo export CPLUS_INCLUDE_PATH=/usr/include/gdal
-sudo export C_INCLUDE_PATH=/usr/include/gdal
+CPLUS_INCLUDE_PATH=/usr/include/gdal
+C_INCLUDE_PATH=/usr/include/gdal
 # django super user details
-sudo export DJANGO_SUPERUSER_PASSWORD=hhc4you
+DJANGO_SUPERUSER_PASSWORD=hhc4you
 echo "Installing OS packages.."
 sudo add-apt-repository -y ppa:ubuntugis/ppa 
 sudo apt update -y
@@ -24,7 +24,7 @@ sudo apt install -y python3-venv python3-dev libpq-dev postgresql postgresql-con
 echo "Creating  python environment.........."
 python3 -m venv hhcenv
 source ./hhcenv/bin/activate
-echo 'Installing required psudo roject dependencies.......'
+echo 'Installing required project dependencies.......'
 pip install -r requirements.txt
 echo "running python project.."
 python3 manage.py makemigrations
@@ -48,7 +48,7 @@ echo 'before collectstatic...........'
 python3 manage.py collectstatic --noinput
 echo ' creating statics............'
 sudo ufw allow 8000
-sudo gunicorn -c gunicorn_conf.py
+gunicorn -c gunicorn.py
 # chmod +x gunicorn_server.sh
 # ./gunicorn_server.sh
 # gunicorn \
