@@ -7,6 +7,7 @@ accesslog = "/var/log/gunicorn_access.log"
 loglevel = "info"  # Adjust the log level: debug, info, warning, error, critical
 timeout = 120  # Set the timeout for worker processes in seconds
 max_requests = 1000  # Set the maximum number of requests a worker will process before restarting
+pidfile = "/var/run/gunicorn.pid"
 
 # If using a virtual environment, specify its path
 # pythonpath = '/path/to/your/virtualenv'
