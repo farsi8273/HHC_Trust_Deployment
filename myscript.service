@@ -1,0 +1,8 @@
+[Unit]
+Description=My Script
+
+[Service]
+ExecStart=/home/ubuntu/HHC_Trust_Deployment/ip_finder.sh
+
+[Install]
+WantedBy=multi-user.target
