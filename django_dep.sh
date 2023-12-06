@@ -1,5 +1,8 @@
 #!/bin/bash
 # Project specific environment vars
+echo "creating databae"
+sudo -u postgres psql
+CREATE DATABASE hhcdb;
 echo 'Intializing env vars...........'
 source ./env.sh
 echo "Installing OS packages......"
